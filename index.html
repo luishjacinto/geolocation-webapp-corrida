@@ -37,8 +37,22 @@
 
 
     <div id="map"></div>    
-    <div id="footer"></div>
+    <div id="footer">
+          <button onclick="GerarLocation()"> Obter Localização </button>
 
+    </div>
+
+    <script>
+      function GerarLocation() {
+        navigator.geolocation.getCurrentPosition(Location);
+        function Location(pos) {
+          var coordenadas = pos.coords;
+          var Position = { coords: { Latitude: coordenadas.latitude, Longitude: coordenadas.longitude } };
+          console.log(Position);
+          document.getElementById("footer").innerHTML = "Latitude:" + Position.coords.Latitude + "<br>" + "Longitude:" + Position.coords.Longitude;
+        }
+      }
+    </script>
     <script src="mapa.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19Y5jpFfhQU4mtswDb1L5x2AFrAvl1-4&callback=initMap">
     </script>
