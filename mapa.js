@@ -251,7 +251,7 @@
       if('geolocation' in navigator){
         const watcher = navigator.geolocation.watchPosition(function(position){
           console.log(position);
-          document.write(position.coords.latitude + " " + position.coords.longitude);
+          document.getElementById("header").innerHTML = position.coords.latitude + " " + position.coords.longitude;
         }, function(error){
           console.log(error);
         }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 5000})
