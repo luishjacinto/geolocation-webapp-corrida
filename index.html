@@ -27,14 +27,14 @@
       height: 16%;
       top: 0;
       width:100%;
-      background-image: url("fundo-header.png");
+      background-color: rgba(0, 0, 0, 0.6)
     }
-    #footer{
+    div#footer{
       position: absolute;
       height: 10%;
       bottom: 0;
       width:100%;
-      background-color: gray;
+      background-color:rgba(0, 0, 0, 1);
     }
     .startbtt {
       width: 90%;
@@ -67,11 +67,14 @@
           var Position = { coords: { Latitude: coordenadas.latitude, Longitude: coordenadas.longitude } };
           console.log(Position);
           document.getElementById("header").innerHTML = "Latitude:" + Position.coords.Latitude + "<br>" + "Longitude:" + Position.coords.Longitude;
+          
         }
       }
     </script>
     <script src="mapa.js"></script>
+    <!--
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19Y5jpFfhQU4mtswDb1L5x2AFrAvl1-4&callback=initMap">
     </script>
+  -->
   </body>
 </html>

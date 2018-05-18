@@ -2,6 +2,13 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
+      /*
+      if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+          mMap.setMyLocationEnabled(true);
+      } else {
+          // Show rationale and request permission.
+      }
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -214,18 +221,20 @@
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
+          setInterval(
           navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             };
-
+            console.log("funfa");
             infoWindow.setPosition(pos);
             infoWindow.setContent('Local Encontrado.');
             map.setCenter(pos);
           }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
-          });
+        })
+          , 5000);
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
@@ -237,4 +246,13 @@
         infoWindow.setContent(browserHasGeolocation ?
           'Error: The Geolocation service failed.' :
           'Error: Your browser doesn\'t support geolocation.');
+      }
+      */
+      if('geolocation' in navigator){
+        const watcher = navigator.geolocation.watchPosition(function(position){
+          console.log(position);
+          document.write(position.coords.latitude + " " + position.coords.longitude);
+        }, function(error){
+          console.log(error);
+        }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 5000})
       }
