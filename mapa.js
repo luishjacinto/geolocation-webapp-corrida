@@ -17,9 +17,7 @@
           streetViewControl: false,
           rotateControl: false,
           fullscreenControl: false,
-          zoomControlOptions: {
-            position: google.maps.ControlPosition.RIGHT_CENTER
-          },
+          zoomControl: false,
 
           styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
@@ -104,6 +102,12 @@
         });
         var infoWindow = new google.maps.InfoWindow({ map: map });
 
+        var marker = new google.maps.Marker({
+          title:"Hello World!",
+          icon: 'marker.png'
+        });
+        marker.setMap(map);
+
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           setInterval(
@@ -115,38 +119,35 @@
               lng: position.coords.longitude,
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Local Encontrado.');
-            map.setCenter(pos);
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('Local Encontrado.');
+            
+            var x = 0;        //Para setar o mapa na sua posição inicialmente
+            if(x == 0){
+              map.setCenter(pos); 
+              x++;
+            }                 ///////////////////////
+
+            myloc = function(){   //Setar o centro do mapa na sua posição
+              map.setCenter(pos);
+            }                     //////////////////////
+
+            marker.setPosition(pos);
           }, function (Error) {
             handleLocationError(true, infoWindow, map.getCenter());
-          }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 5000})
-          , 5000);
+          }, { enableHighAccuracy: true, maximumAge: 500, timeout: 500})
+          , 500);
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
       }
-/*
-    if('geolocation' in navigator){
-      const watcher = navigator.geolocation.watchPosition(function(position){
-        console.log(position);
-        console.log(position.coords.latitude + " " + position.coords.longitude);
-        /*var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        console.log(pos);
-        map.setCenter(pos);
-      }, function(error){
-        console.log(error);
-      }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 5000})
-    }
-  */
+      map.setCenter(pos);
+
+
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-          'Error: The Geolocation service failed.' :
-          'Error: Your browser doesn\'t support geolocation.');
+        //infoWindow.setPosition(pos);
+        //infoWindow.setContent(browserHasGeolocation ?
+         // 'Error: The Geolocation service failed.' :
+         // 'Error: Your browser doesn\'t support geolocation.');
       }
-  
