@@ -1,18 +1,13 @@
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
           mMap.setMyLocationEnabled(true);
       } else {
-          // Show rationale and request permission.
       }
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: { lat: -34.397, lng: 150.644 },
-          zoom: 17,
+          zoom: 18,
           mapTypeControl: false,
           streetViewControl: false,
           rotateControl: false,
@@ -100,54 +95,45 @@
             }
           ]
         });
-        var infoWindow = new google.maps.InfoWindow({ map: map });
+        var infoWindow = new google.maps.InfoWindow({ map: map });//
 
-        var marker = new google.maps.Marker({
+        var marcador = new google.maps.Marker({
           title:"Hello World!",
           icon: 'marker.png'
         });
-        marker.setMap(map);
+        marcador.setMap(map);
 
         // Try HTML5 geolocation.
+        var contadorDeInicialização = 0;
         if (navigator.geolocation) {
-          setInterval(
+          /*setInterval(*/
           navigator.geolocation.watchPosition(function (position) {
-            console.log(position);
 
-            var pos = {
+            var posicaoAtualizada = {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             };
-
-            //infoWindow.setPosition(pos);
-            //infoWindow.setContent('Local Encontrado.');
             
-            var x = 0;        //Para setar o mapa na sua posição inicialmente
-            if(x == 0){
-              map.setCenter(pos); 
-              x++;
-            }                 ///////////////////////
+            if(contadorDeInicialização == 0){
+              map.setCenter(posicaoAtualizada); 
+              contadorDeInicialização++;
+            }
+            
+            centralizarLocalizacao = function(){
+              map.setCenter(posicaoAtualizada);
+              map.setZoom(18);
+            }
 
-            myloc = function(){   //Setar o centro do mapa na sua posição
-              map.setCenter(pos);
-            }                     //////////////////////
-
-            marker.setPosition(pos);
+            console.log("latitude:" + posicaoAtualizada.lat + " longitude:" + posicaoAtualizada.lng);
+            marcador.setPosition(posicaoAtualizada);
           }, function (Error) {
             handleLocationError(true, infoWindow, map.getCenter());
-          }, { enableHighAccuracy: true, maximumAge: 500, timeout: 500})
-          , 500);
+          }, { enableHighAccuracy: true, maximumAge: 500, timeout: 500});/*
+          , 500)*/;
         } else {
-          // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
       }
-      map.setCenter(pos);
-
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        //infoWindow.setPosition(pos);
-        //infoWindow.setContent(browserHasGeolocation ?
-         // 'Error: The Geolocation service failed.' :
-         // 'Error: Your browser doesn\'t support geolocation.');
+      
+      function handleLocationError(browserHasGeolocation, infoWindow, posicaoAtualizada) {
       }

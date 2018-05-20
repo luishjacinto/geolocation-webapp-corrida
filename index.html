@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link href="css/stylelogin.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.amber-orange.min.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </head>
   <style>
@@ -29,48 +29,107 @@
       width:100%;
       background-color: rgba(0, 0, 0, 0.6)
     }
-    #myloc{
+    #minhaLocalizacao{
       position: absolute;
       top: 0;
       margin-top: 29%;
       margin-left: 84%;
     }
-    div#footer{
+    #footer{
       position: absolute;
       height: 10%;
       bottom: 0;
       width:100%;
       background-color:rgba(0, 0, 0, 1);
     }
-    .startbtt {
+    #percursoCompleto{
+      position: absolute;
+      height: 40%;
+      bottom: 0;
+      width:100%;
+      background: linear-gradient(rgba(127, 255, 0, 0), rgba(127, 255, 0, 1));
+      display: none;
+    }
+    
+    #botaoComecarPercurso {
       width: 90%;
       height: 80%;
       margin-top: 2%;
       margin-left: 5%;
       margin-right: 5%;  
     }
+    .cronometro{
+      text-align: center;
+      margin-top: 4%;
+    }
+    .numeroCronometro {
+      color: white;
+      font-size: 400%;
+    }
+    .infoPercurso {
+      color: white;
+      font-size: 200%;
+    }
+    @media screen and (max-width:1000px){
+      .cronometro{
+        margin-top: 6%;
+      }
+    }
+    @media screen and (max-width:700px){
+      .cronometro{
+        margin-top: 8%;
+      }
+    }
+    @media screen and (max-width:500px){
+      .cronometro{
+        margin-top: 12%;
+      }
+    }
 
   </style>
   <body>
 
-    
-
     <div id="map"></div>    
 
     <div id="header">
-        <button onclick="myloc();" id="myloc" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <div class="cronometro">
+				
+            <span id="Horas" class="numeroCronometro">00</span>
+            <span class="numeroCronometro">:</span>
+            <span id="Minutos" class="numeroCronometro">00</span> 
+            <span class="numeroCronometro">:</span>
+            <span id="Segundos" class="numeroCronometro">00</span> 
+            <span class="numeroCronometro">:</span>
+            <span id="Centesimas" class="numeroCronometro">00</span>
+    
+        </div>
+        <button id="minhaLocalizacao" onclick="centralizarLocalizacao();" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
             <i class="material-icons">my_location</i>
         </button>
     </div>
 
+    <div id="percursoCompleto">
+        <br>
+        <span class="infoPercurso">Tempo Decorrido:</span>
+        <span id="tempoDecorrido" class="infoPercurso"></span>
+        <br>
+        <br>
+        <span class="infoPercurso">Distancia Percorrida:</span>
+        <br>
+        <br>
+        <span class="infoPercurso">Velocidade no Percurso:</span>
+        <br>
+        <button onclick="fecharResultado();">Fechar</button>
+    </div>
 
     <div id="footer">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect startbtt">
+        <button id="botaoComecarPercurso" onclick="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
             Começar Percurso
           </button>
     </div>
 
     <script src="mapa.js"></script>
+    <script src="cronometro.js"></script>
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19Y5jpFfhQU4mtswDb1L5x2AFrAvl1-4&callback=initMap">
     </script>
