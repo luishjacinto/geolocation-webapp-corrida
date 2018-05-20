@@ -103,6 +103,21 @@
         });
         marcador.setMap(map);
 
+        localStorage.clear();
+        console.log(localStorage);
+
+        function atualizaDadosPercurso(lat, lng){
+          var latitudeResultante = (localStorage.latitude - lat)*1852;
+          var longitudeResultante = (localStorage.longitude - lng)*1852;
+
+          diferencaDistancia = Math.sqrt(latitudeResultante*latitudeResultante + longitudeResultante*longitudeResultante);
+          localStorage.distanciaPercorrida = parseInt(localStorage.distanciaPercorrida) + diferencaDistancia;
+          console.log("Ultima distancia percorrida " + diferencaDistancia);
+          console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
+
+          document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
+
+        }
         // Try HTML5 geolocation.
         var contadorDeInicialização = 0;
         if (navigator.geolocation) {
@@ -115,17 +130,25 @@
             };
             
             if(contadorDeInicialização == 0){
+              localStorage.latitude = 0;
+              localStorage.longitude = 0;
+              localStorage.distanciaPercorrida = 0;
+
               map.setCenter(posicaoAtualizada); 
               contadorDeInicialização++;
             }
             
+            atualizaDadosPercurso(posicaoAtualizada.lat, posicaoAtualizada.lng);
+
             centralizarLocalizacao = function(){
               map.setCenter(posicaoAtualizada);
               map.setZoom(18);
             }
 
+            //COORDENADAS
             document.getElementById('spanDeCoordenadas').innerHTML = " lat:" + posicaoAtualizada.lat + " lng:" + posicaoAtualizada.lng;
             console.log("latitude:" + posicaoAtualizada.lat + " longitude:" + posicaoAtualizada.lng);
+
             marcador.setPosition(posicaoAtualizada);
           }, function (Error) {
             handleLocationError(true, infoWindow, map.getCenter());
