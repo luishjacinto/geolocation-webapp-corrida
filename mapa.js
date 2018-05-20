@@ -107,16 +107,19 @@
         console.log(localStorage);
 
         function atualizaDadosPercurso(lat, lng){
-          var latitudeResultante = (localStorage.latitude - lat)*1852;
-          var longitudeResultante = (localStorage.longitude - lng)*1852;
+          if(localStorage.latitude != 0){
+            var latitudeResultante = (localStorage.latitude - lat)*1852;
+            var longitudeResultante = (localStorage.longitude - lng)*1852;
+            console.log("lat result: " + latitudeResultante);
+            console.log("lng result: " + longitudeResultante);
 
-          diferencaDistancia = Math.sqrt(latitudeResultante*latitudeResultante + longitudeResultante*longitudeResultante);
-          localStorage.distanciaPercorrida = parseInt(localStorage.distanciaPercorrida) + diferencaDistancia;
-          console.log("Ultima distancia percorrida " + diferencaDistancia);
-          console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
+            diferencaDistancia = Math.sqrt((latitudeResultante*latitudeResultante) + (longitudeResultante*longitudeResultante));
+            localStorage.distanciaPercorrida = parseInt(localStorage.distanciaPercorrida) + diferencaDistancia;
+            console.log("Ultima distancia percorrida " + diferencaDistancia);
+            console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
 
-          document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
-
+            document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
+          }
         }
         // Try HTML5 geolocation.
         var contadorDeInicialização = 0;
