@@ -124,6 +124,7 @@
               map.setZoom(18);
             }
 
+            document.getElementById('spanDeCoordenadas').innerHTML = " lat:" + posicaoAtualizada.lat + " lng:" + posicaoAtualizada.lng;
             console.log("latitude:" + posicaoAtualizada.lat + " longitude:" + posicaoAtualizada.lng);
             marcador.setPosition(posicaoAtualizada);
           }, function (Error) {
