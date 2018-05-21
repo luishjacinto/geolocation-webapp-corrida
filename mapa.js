@@ -124,7 +124,8 @@
           localStorage.distanciaPercorrida = distanciaJaPercorrida + diferencaDistancia;
           //console.log("Ultima distancia percorrida " + distanciaJaPercorrida);
           //console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
-
+          localStorage.latitude = lat;
+          localStorage.longitude = lng;
           document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
         }
         // Try HTML5 geolocation.
