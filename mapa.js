@@ -207,6 +207,11 @@
               }
             }
 
+            fecharResultados = function{
+              inicial.setPosition(null);
+              final.setPosition(null);
+            }
+
 
             //FUNCOES DO BOTAO CENTRALIZAR
             centralizarLocalizacao = function(){
