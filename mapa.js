@@ -155,7 +155,7 @@
           var velocidadeNoPercurso = parseFloat(localStorage.distanciaPercorrida)/tempoDePercursoEmSegundos;
 
 
-          document.getElementById('distancia').innerHTML = localStorage.distanciaPercorrida;+ "m";
+          document.getElementById('distancia').innerHTML = localStorage.distanciaPercorrida+ "m";
 
           document.getElementById('velocidade').innerHTML = velocidadeNoPercurso + "m/s";
 
