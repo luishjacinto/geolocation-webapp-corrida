@@ -208,7 +208,7 @@
             }
 
             fecharResultados = function(){
-              inicial.setPosition(null);
+              inicio.setPosition(null);
               final.setPosition(null);
             }
 
