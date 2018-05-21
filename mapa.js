@@ -188,7 +188,7 @@
               if(contadorClickBotao1 == 0){
                 final.setPosition(null);
 
-                inicio.setPosition(pos);
+                inicio.setPosition(posicaoAtualizada);
                 document.getElementById("botaoComecarPercurso").innerHTML = "Finalizar Percurso";
                 localStorage.latitude = 0;
                 localStorage.longitude = 0;
@@ -197,7 +197,7 @@
                 contadorClickBotao1++;
               }else{
 
-                final.setPosition(pos);
+                final.setPosition(posicaoAtualizada);
                 definirStatusPercurso();
                 document.getElementById("botaoComecarPercurso").innerHTML = "Começar Percurso";
                 localStorage.latitude = 0;
