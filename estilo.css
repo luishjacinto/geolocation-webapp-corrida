@@ -64,7 +64,7 @@
     }
     .infoPercurso {
       color: white;
-      font-size: 100%;
+      font-size: 120%;
     }
     @media screen and (max-width:1000px){
       .cronometro{
