@@ -1,0 +1,83 @@
+
+    #map {
+      height: 100%;
+      margin-bottom: 0%;
+    }
+    
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #spanDeCoordenadas{
+      position: absolute;
+      top: 0;
+    }
+    #distanciaPercorrida{
+      position: absolute;
+      top:17%;
+    }
+    #header{
+      position: absolute;
+      height: 16%;
+      top: 0;
+      width:100%;
+      background-color: rgba(0, 0, 0, 0.6)
+    }
+    #minhaLocalizacao{
+      position: absolute;
+      top: 0;
+      margin-top: 29%;
+      margin-left: 84%;
+    }
+    #footer{
+      position: absolute;
+      height: 10%;
+      bottom: 0;
+      width:100%;
+      background-color:rgba(0, 0, 0, 1);
+    }
+    #percursoCompleto{
+      position: absolute;
+      height: 40%;
+      bottom: 0;
+      width:100%;
+      background: linear-gradient(rgba(127, 255, 0, 0), rgba(127, 255, 0, 1));
+      display: none;
+    }
+    
+    #botaoComecarPercurso {
+      width: 90%;
+      height: 80%;
+      margin-top: 2%;
+      margin-left: 5%;
+      margin-right: 5%;  
+    }
+    .cronometro{
+      text-align: center;
+      margin-top: 4%;
+    }
+    .numeroCronometro {
+      color: white;
+      font-size: 400%;
+    }
+    .infoPercurso {
+      color: white;
+      font-size: 150%;
+    }
+    @media screen and (max-width:1000px){
+      .cronometro{
+        margin-top: 6%;
+      }
+    }
+    @media screen and (max-width:700px){
+      .cronometro{
+        margin-top: 8%;
+      }
+    }
+    @media screen and (max-width:500px){
+      .cronometro{
+        margin-top: 12%;
+      }
+    }

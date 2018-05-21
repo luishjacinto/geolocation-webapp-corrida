@@ -103,6 +103,20 @@
         });
         marcador.setMap(map);
 
+        var inicio = new google.maps.Marker({
+          title:"Hello World!",
+          icon: 'inicio.png'
+        });
+
+        inicio.setMap(map);
+
+        var final = new google.maps.Marker({
+          title:"Hello World!",
+          icon: 'final.png'
+        });
+
+        final.setMap(map);
+
         //RESETAR/INICIAR LOCALSTORAGE
         localStorage.clear();
 
@@ -140,9 +154,10 @@
 
           var velocidadeNoPercurso = parseFloat(localStorage.distanciaPercorrida)/tempoDePercursoEmSegundos;
 
-          document.getElementById('distancia').innerHTML = localStorage.distanciaPercorrida;
 
-          document.getElementById('velocidade').innerHTML = velocidadeNoPercurso;
+          document.getElementById('distancia').innerHTML = localStorage.distanciaPercorrida;+ "m";
+
+          document.getElementById('velocidade').innerHTML = velocidadeNoPercurso + "m/s";
 
         }
 
@@ -171,12 +186,18 @@
 
             iniciarPercurso = function(){
               if(contadorClickBotao1 == 0){
+                final.setPosition(null);
+
+                inicio.setPosition(pos);
                 document.getElementById("botaoComecarPercurso").innerHTML = "Finalizar Percurso";
                 localStorage.latitude = 0;
                 localStorage.longitude = 0;
                 localStorage.distanciaPercorrida = 0;
+                document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
                 contadorClickBotao1++;
               }else{
+
+                final.setPosition(pos);
                 definirStatusPercurso();
                 document.getElementById("botaoComecarPercurso").innerHTML = "Começar Percurso";
                 localStorage.latitude = 0;
