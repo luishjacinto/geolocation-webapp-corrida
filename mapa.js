@@ -107,27 +107,26 @@
         console.log(localStorage);
 
         function atualizaDadosPercurso(lat, lng){
-          console.log(localStorage.latitude);
-          console.log(lat);
           var latitudeResultante = (localStorage.latitude - lat)*1852;
-          if(localStorage.latitude == lat) latitudeResultante = 0;
+          if(localStorage.latitude == lat || localStorage.latitude == 0) latitudeResultante = 0;
           var longitudeResultante = (localStorage.longitude - lng)*1852;
-          if(localStorage.longitude == lng) longitudeResultante = 0;
+          if(localStorage.longitude == lng || localStorage.longitude == 0) longitudeResultante = 0;
 
+          console.log("Distancia ja percorrida " + localStorage.distanciaPercorrida);
 
           diferencaDistancia = Math.sqrt((latitudeResultante * latitudeResultante) + (longitudeResultante * longitudeResultante));
-          distanciaJaPercorrida = parseInt(localStorage.distanciaPercorrida);
-          //console.log(diferencaDistancia);
-          //console.log(distanciaJaPercorrida);
-          console.log(distanciaJaPercorrida + diferencaDistancia)
+          localStorage.distanciaPercorrida = parseFloat(localStorage.distanciaPercorrida) + diferencaDistancia;
+          
+          console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
 
-          localStorage.distanciaPercorrida = distanciaJaPercorrida + diferencaDistancia;
-          //console.log("Ultima distancia percorrida " + distanciaJaPercorrida);
-          //console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
+          //atualizar local storage com ultimas coodernadas
           localStorage.latitude = lat;
           localStorage.longitude = lng;
           document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
         }
+        localStorage.latitude = 0;
+        localStorage.longitude = 0;
+        localStorage.distanciaPercorrida = 0;
         // Try HTML5 geolocation.
         var contadorDeInicialização = 0;
         if (navigator.geolocation) {
@@ -140,10 +139,6 @@
             };
             
             if(contadorDeInicialização == 0){
-              localStorage.latitude = posicaoAtualizada.lat;
-              localStorage.longitude = posicaoAtualizada.lng;
-              localStorage.distanciaPercorrida = 0;
-
               map.setCenter(posicaoAtualizada); 
               contadorDeInicialização++;
             }
