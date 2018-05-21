@@ -1,8 +1,12 @@
 document.getElementById("botaoComecarPercurso").addEventListener("click", botaoPercurso);
+document.getElementById("fecharResultados").addEventListener("click", fecharResultado);
 
 function fecharResultado(){
     document.getElementById('percursoCompleto').style.display = 'none';
-    document.getElementById('tempoDecorrido').innerHTML = '';
+	document.getElementById('tempo').innerHTML = '';
+	document.getElementById('distancia').innerHTML = '';
+	document.getElementById('velocidade').innerHTML = '';
+
 }
 
 var centesimas = 0;
@@ -23,11 +27,11 @@ function botaoPercurso(){
 function inicio () {
     control = setInterval(cronometro,10);
     document.getElementById('percursoCompleto').style.display = 'none';
-    document.getElementById('tempoDecorrido').innerHTML = '';
+    document.getElementById('tempo').innerHTML = '';
 }
 
 function parar () {
-    document.getElementById('tempoDecorrido').innerHTML = Horas.innerHTML + ":" + Minutos.innerHTML + ":" + Segundos.innerHTML + ":" + Centesimas.innerHTML;
+    document.getElementById('tempo').innerHTML = Horas.innerHTML + ":" + Minutos.innerHTML + ":" + Segundos.innerHTML + ":" + Centesimas.innerHTML;
     clearInterval(control);
     Horas.innerHTML = "00";
     Minutos.innerHTML = "00";

@@ -28,7 +28,7 @@
     }
     #distanciaPercorrida{
       position: absolute;
-      top:20%;
+      top:17%;
     }
     #header{
       position: absolute;
@@ -123,19 +123,21 @@
     <div id="percursoCompleto">
         <br>
         <span class="infoPercurso">Tempo Decorrido:</span>
-        <span id="tempoDecorrido" class="infoPercurso"></span>
+        <span id="tempo" class="infoPercurso"></span>
         <br>
         <br>
         <span class="infoPercurso">Distancia Percorrida:</span>
+        <span id="distancia" class="infoPercurso"></span>
         <br>
         <br>
         <span class="infoPercurso">Velocidade no Percurso:</span>
+        <span id="velocidade" class="infoPercurso"></span>
         <br>
-        <button onclick="fecharResultado();">Fechar</button>
+        <button id="fecharResultados" onclick="">Fechar</button>
     </div>
 
     <div id="footer">
-        <button id="botaoComecarPercurso" onclick="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+        <button id="botaoComecarPercurso" onclick="iniciarPercurso();" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
             Começar Percurso
           </button>
     </div>
