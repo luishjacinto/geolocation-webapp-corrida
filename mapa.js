@@ -107,15 +107,23 @@
         console.log(localStorage);
 
         function atualizaDadosPercurso(lat, lng){
+          console.log(localStorage.latitude);
+          console.log(lat);
           var latitudeResultante = (localStorage.latitude - lat)*1852;
+          if(localStorage.latitude == lat) latitudeResultante = 0;
           var longitudeResultante = (localStorage.longitude - lng)*1852;
-          console.log("lat result: " + latitudeResultante);
-          console.log("lng result: " + longitudeResultante);
+          if(localStorage.longitude == lng) longitudeResultante = 0;
 
-          diferencaDistancia = Math.sqrt((latitudeResultante*latitudeResultante) + (longitudeResultante*longitudeResultante));
-          localStorage.distanciaPercorrida = parseInt(localStorage.distanciaPercorrida) + diferencaDistancia;
-          console.log("Ultima distancia percorrida " + diferencaDistancia);
-          console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
+
+          diferencaDistancia = Math.sqrt((latitudeResultante * latitudeResultante) + (longitudeResultante * longitudeResultante));
+          distanciaJaPercorrida = parseInt(localStorage.distanciaPercorrida);
+          //console.log(diferencaDistancia);
+          //console.log(distanciaJaPercorrida);
+          console.log(distanciaJaPercorrida + diferencaDistancia)
+
+          localStorage.distanciaPercorrida = distanciaJaPercorrida + diferencaDistancia;
+          //console.log("Ultima distancia percorrida " + distanciaJaPercorrida);
+          //console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
 
           document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
         }
