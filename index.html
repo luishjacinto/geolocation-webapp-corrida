@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css"/>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="estilo.css">
   </head>
 
   <body>
 
-    <div id="map"></div>    
+    <div id="map"></div>
 
     <span id="spanDeCoordenadas" style="color: dimgrey"></span>
     <span id="distanciaPercorrida" style="color: dimgrey"></span>
@@ -21,15 +22,15 @@
 
     <div id="header">
         <div class="cronometro">
-				
+
             <span id="Horas" class="numeroCronometro">00</span>
             <span class="numeroCronometro">:</span>
-            <span id="Minutos" class="numeroCronometro">00</span> 
+            <span id="Minutos" class="numeroCronometro">00</span>
             <span class="numeroCronometro">:</span>
-            <span id="Segundos" class="numeroCronometro">00</span> 
+            <span id="Segundos" class="numeroCronometro">00</span>
             <span class="numeroCronometro">:</span>
             <span id="Centesimas" class="numeroCronometro">00</span>
-    
+
         </div>
         <button id="minhaLocalizacao" onclick="centralizarLocalizacao();" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
             <i class="material-icons">my_location</i>
@@ -57,9 +58,9 @@
 
     <script src="mapa.js"></script>
     <script src="cronometro.js"></script>
-    
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19Y5jpFfhQU4mtswDb1L5x2AFrAvl1-4&callback=initMap">
     </script>
-  
+
   </body>
 </html>
