@@ -3,7 +3,7 @@
   "background_color": "#ffffff",
   "display": "fullscreen",
   "Scope": "/",
-  "start_url": "/",
+  "start_url": "https://luishjacinto.github.io/teste/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
