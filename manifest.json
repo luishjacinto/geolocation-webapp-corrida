@@ -1,4 +1,6 @@
 {
+  "name": "Geolocation",
+  "short_name": "Geo",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "fullscreen",
