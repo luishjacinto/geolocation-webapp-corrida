@@ -18,6 +18,14 @@
       position: absolute;
       top:17%;
     }
+    #distanciaUltimaCorrida{
+      position: absolute;
+      top:20%;
+    }
+    #tempoUltimaCorrida{
+      position: absolute;
+      top:23%;
+    }
     #header{
       position: absolute;
       height: 16%;

@@ -123,6 +123,9 @@
         localStorage.latitude = 0;
         localStorage.longitude = 0;
         localStorage.distanciaPercorrida = 0;
+        localStorage.distanciaUltimaCorrida = "-";
+        localStorage.tempoUltimaCorrida = "-";
+
 
         //FUNCOES DE BOTAO PERCURSO
         var contadorClickBotao1 = 0;
@@ -144,6 +147,8 @@
           localStorage.latitude = lat;
           localStorage.longitude = lng;
           document.getElementById('distanciaPercorrida').innerHTML = localStorage.distanciaPercorrida;
+          document.getElementById('distanciaUltimaCorrida').innerHTML = localStorage.distanciaUltimaCorrida;
+          document.getElementById('tempoUltimaCorrida').innerHTML = localStorage.tempoUltimaCorrida;
         }
 
         definirStatusPercurso = function(){ 
@@ -154,6 +159,11 @@
 
           var velocidadeNoPercurso = parseFloat(localStorage.distanciaPercorrida)/tempoDePercursoEmSegundos;
 
+          document.getElementById('distanciaUltimaCorrida').innerHTML = localStorage.distanciaPercorrida+ "m";
+          document.getElementById('tempoUltimaCorrida').innerHTML = velocidadeNoPercurso + "m/s";
+          
+          localStorage.distanciaUltimaCorrida = localStorage.distanciaPercorrida+ "m";
+          localStorage.tempoUltimaCorrida = velocidadeNoPercurso + "m/s";
 
           document.getElementById('distancia').innerHTML = localStorage.distanciaPercorrida+ "m";
 
