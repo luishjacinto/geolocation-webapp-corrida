@@ -5,7 +5,7 @@
   "background_color": "#ffffff",
   "display": "fullscreen",
   "Scope": "/",
-  "start_url": "https://luishjacinto.github.io/teste/",
+  "start_url": "https://luishjacinto.github.io/geolocation-webapp-corrida/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
