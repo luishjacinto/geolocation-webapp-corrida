@@ -3,6 +3,11 @@
           mMap.setMyLocationEnabled(true);
       } else {
       }
+      function degrees_to_radians(degrees)
+      {
+        var pi = Math.PI;
+        return degrees * (pi/180);
+      }
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -127,15 +132,16 @@
         var contadorClickBotao1 = 0;
 
         atualizaDadosPercurso = function(lat, lng){
-          var latitudeResultante = (localStorage.latitude - lat)*1852;
-          if(localStorage.latitude == lat || localStorage.latitude == 0) latitudeResultante = 0;
-          var longitudeResultante = (localStorage.longitude - lng)*1852;
-          if(localStorage.longitude == lng || localStorage.longitude == 0) longitudeResultante = 0;
+          //var latitudeResultante = (localStorage.latitude - lat)*1852;
+          //if(localStorage.latitude == lat || localStorage.latitude == 0) latitudeResultante = 0;
+          //var longitudeResultante = (localStorage.longitude - lng)*1852;
+          //if(localStorage.longitude == lng || localStorage.longitude == 0) longitudeResultante = 0;
 
           console.log("Distancia ja percorrida " + localStorage.distanciaPercorrida);
 
           localStorage.distanciaPercorrida = parseFloat(localStorage.distanciaPercorrida) +
-          Math.sqrt((latitudeResultante * latitudeResultante) + (longitudeResultante * longitudeResultante));
+          6371*Math.acos(Math.cos(degrees_to_radians(90-localStorage.latitude))*Math.cos(degrees_to_radians(90-lat))+Math.sin(degrees_to_radians(90-localStorage.latitude))*Math.sin(degrees_to_radians(90-lat))*Math.cos(degrees_to_radians(localStorage.longitude-lng)))*1;
+          //Math.sqrt((latitudeResultante * latitudeResultante) + (longitudeResultante * longitudeResultante));
 
           console.log("Distancia total percorrida " + localStorage.distanciaPercorrida);
           console.log("------------------------");
